@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Springfield Together — Youth, Education & Community</title>
+  <meta name="description" content="Springfield Together unites youth, families, and the C3 Police Unit to build a stronger Springfield, MA — one step at a time.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Tokens ──────────────────────────────────────────────── */
+    :root {
+      --font-display: 'Bricolage Grotesque', 'Public Sans', system-ui, sans-serif;
+      --font-body: 'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+      --blue-50:   #F2F7FC; --blue-100: #E3EDF7; --blue-200: #C4D8EC;
+      --blue-300:  #98BAD9; --blue-400: #5E8DBC; --blue-500: #2C6699;
+      --blue-600:  #1E4E78; --blue-700: #16395C; --blue-800: #102C48;
+      --blue-900:  #0E2438; --blue-950: #091824;
+      --gold-100:  #FDF0D6; --gold-200: #FBE0AC; --gold-300: #FACB78;
+      --gold-400:  #F7B64E; --gold-500: #F4A52E; --gold-600: #DE8517;
+      --gold-700:  #B8650F; --gold-800: #8F4D0D;
+      --brick-100: #F7DAD0; --brick-200: #EDB6A4; --brick-400: #D26A4D;
+      --brick-500: #C04E30; --brick-600: #A03E26; --brick-700: #7E311E;
+      --green-100: #D6EDE0; --green-300: #93CFB1; --green-600: #2E8160;
+      --green-700: #226048;
+      --ink-100:   #F2F0E8; --ink-200: #E4E2D8; --ink-300: #C7C8BF;
+      --ink-400:   #9A9C92; --ink-500: #6E7068; --ink-600: #54564F;
+      --ink-700:   #3F413B; --ink-800: #2E2F2B; --ink-950: #1A1B18;
+      --cream:     #F7F4EC; --paper: #FFFFFF;
+      --line:      #E6E2D6; --line-strong: #D6D1C2;
+      --sand-100:  #EFEADD;
+
+      --brand-primary:    var(--blue-700);
+      --brand-accent:     var(--gold-500);
+      --brand-accent-ink: var(--gold-700);
+      --brand-secondary:  var(--brick-500);
+      --text-strong:  var(--ink-950);
+      --text-body:    var(--ink-700);
+      --text-muted:   var(--ink-500);
+      --text-faint:   var(--ink-400);
+      --text-on-dark: #F4F1E8;
+      --text-on-dark-muted: rgba(244,241,232,.72);
+      --surface-page:       var(--cream);
+      --surface-card:       var(--paper);
+      --surface-dark:       var(--blue-900);
+      --surface-accent-soft: var(--gold-100);
+      --border-subtle:  var(--line);
+      --border-default: var(--line-strong);
+      --border-on-dark: rgba(244,241,232,.18);
+
+      --radius-xs:   6px;  --radius-sm:  8px;  --radius-md:  12px;
+      --radius-lg:  18px;  --radius-xl: 24px;  --radius-2xl: 30px;
+      --radius-pill: 999px; --radius-card: 18px;
+
+      --shadow-xs: 0 1px 2px rgba(14,36,56,.06);
+      --shadow-sm: 0 2px 8px rgba(14,36,56,.08);
+      --shadow-md: 0 10px 26px rgba(14,36,56,.10);
+      --shadow-lg: 0 18px 44px rgba(14,36,56,.14);
+      --shadow-xl: 0 30px 70px rgba(14,36,56,.18);
+      --shadow-accent: 0 12px 28px rgba(184,101,15,.28);
+
+      --space-1: .25rem; --space-2: .5rem;  --space-3: .75rem;
+      --space-4: 1rem;   --space-5: 1.25rem;--space-6: 1.5rem;
+      --space-8: 2rem;   --space-10: 2.5rem;--space-12: 3rem;
+      --space-16: 4rem;  --space-20: 5rem;  --space-24: 6rem;
+      --space-32: 8rem;
+      --container-max: 1200px;
+      --gutter: 1.5rem;
+      --section-y: 6rem;
+
+      --text-display: 4.5rem;
+      --text-h1: 3.25rem; --text-h2: 2.5rem; --text-h3: 1.875rem;
+      --text-h4: 1.5rem;  --text-h5: 1.25rem;
+      --text-md: 1.125rem;--text-base: 1rem; --text-sm: .875rem;
+      --text-eyebrow: .8125rem;
+      --tracking-tighter: -.03em; --tracking-tight: -.012em;
+      --tracking-eyebrow: .14em;  --tracking-caps: .12em;
+      --leading-tight: 1.05; --leading-snug: 1.18;
+      --leading-heading: 1.12; --leading-normal: 1.55;
+
+      --dur-fast: 140ms; --dur-base: 200ms; --dur-slow: 320ms;
+      --ease-out: cubic-bezier(.22,.61,.36,1);
+      --ease-spring: cubic-bezier(.34,1.56,.64,1);
+    }
+
+    /* ─── Reset ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      color: var(--text-body);
+      background: var(--surface-page);
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font: inherit; border: none; background: none; }
+
+    /* ─── Utilities ───────────────────────────────────────────── */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: var(--text-eyebrow);
+      letter-spacing: var(--tracking-eyebrow);
+      text-transform: uppercase;
+      color: var(--brand-accent-ink);
+    }
+    .eyebrow svg { flex-shrink: 0; }
+    .eyebrow--light { color: var(--gold-400); }
+    .divider {
+      height: 4px;
+      width: 64px;
+      background: var(--brand-accent);
+      border-radius: var(--radius-pill);
+      margin-top: var(--space-5);
+    }
+
+    /* ─── Buttons ─────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5em;
+      font-family: var(--font-body);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: .005em;
+      padding: 15px 28px;
+      font-size: 1rem;
+      border-radius: var(--radius-md);
+      transition:
+        background var(--dur-fast) var(--ease-out),
+        transform  var(--dur-fast) var(--ease-out),
+        box-shadow var(--dur-fast) var(--ease-out);
+      border: 1.5px solid transparent;
+    }
+    .btn:active { transform: translateY(1px) scale(.99); }
+    .btn--primary {
+      background: var(--blue-700);
+      color: #fff;
+      border-color: var(--blue-700);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn--primary:hover { background: var(--blue-800); }
+    .btn--secondary {
+      background: var(--gold-500);
+      color: var(--blue-950);
+      border-color: var(--gold-500);
+      box-shadow: var(--shadow-accent);
+    }
+    .btn--secondary:hover { background: var(--gold-600); }
+    .btn--outline {
+      background: transparent;
+      color: var(--blue-700);
+      border-color: var(--line-strong);
+    }
+    .btn--outline:hover { background: var(--blue-50); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--blue-700);
+      border-color: transparent;
+      padding-left: 0; padding-right: 0;
+    }
+    .btn--ghost:hover { color: var(--blue-900); }
+    .btn--pill { border-radius: var(--radius-pill); }
+    .btn--sm { padding: 9px 16px; font-size: .875rem; }
+    .btn--lg { padding: 17px 34px; font-size: 1.125rem; }
+
+    /* ─── Badges ──────────────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5em;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+    }
+    .badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .badge--neutral { background: var(--ink-100); color: var(--ink-700); }
+    .badge--blue    { background: var(--blue-100);  color: var(--blue-700); }
+    .badge--gold    { background: var(--gold-100);  color: var(--gold-700); }
+    .badge--gold .dot { background: var(--gold-500); }
+    .badge--clay    { background: var(--brick-100); color: var(--brick-600); }
+    .badge--clay.solid { background: var(--brick-500); color: #fff; }
+    .badge--green   { background: var(--green-100); color: var(--green-700); }
+    .badge--green .dot { background: var(--green-600); }
+
+    /* ─── Cards ───────────────────────────────────────────────── */
+    .card {
+      background: var(--surface-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-sm);
+      transition:
+        transform var(--dur-base) var(--ease-out),
+        box-shadow var(--dur-base) var(--ease-out);
+    }
+    .card--interactive:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card--gold   { border-left: 5px solid var(--gold-500); }
+    .card--blue   { border-left: 5px solid var(--blue-700); }
+    .card--brick  { border-left: 5px solid var(--brick-500); }
+    .card--green  { border-left: 5px solid var(--green-600); }
+    .card--feature { position: relative; padding-top: calc(var(--space-6) + 4px); }
+    .card--feature::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gold-500);
+      border-radius: var(--radius-card) var(--radius-card) 0 0;
+    }
+    .card--dark {
+      background: var(--surface-dark);
+      border-color: var(--border-on-dark);
+      color: var(--text-on-dark);
+    }
+
+    /* ─── Stat ────────────────────────────────────────────────── */
+    .stat-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-h1);
+      line-height: 1;
+      letter-spacing: var(--tracking-tighter);
+      color: var(--blue-700);
+    }
+    .stat-value--gold  { color: var(--gold-600); }
+    .stat-value--clay  { color: var(--brick-500); }
+    .stat-value--green { color: var(--green-600); }
+    .stat-value--light { color: var(--gold-400); }
+    .stat-label {
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: var(--text-muted);
+      margin-top: var(--space-2);
+    }
+    .stat-label--light { color: var(--text-on-dark-muted); }
+
+    /* ─── Nav ─────────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 244, 236, .92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      height: 68px;
+    }
+    .nav-logo { flex-shrink: 0; }
+    .nav-logo img { height: 38px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+      list-style: none;
+      margin-left: auto;
+    }
+    .nav-links a {
+      font-weight: 500;
+      font-size: .9375rem;
+      color: var(--text-body);
+      transition: color var(--dur-fast);
+    }
+    .nav-links a:hover { color: var(--blue-700); }
+    .nav-cta { margin-left: var(--space-4); }
+
+    /* ─── Hero ────────────────────────────────────────────────── */
+    .hero {
+      background: var(--blue-900);
+      color: var(--text-on-dark);
+      padding: var(--space-32) 0 var(--space-24);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 110%, rgba(244,165,46,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% -10%, rgba(30,78,120,.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+    .hero-eyebrow { margin-bottom: var(--space-5); }
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, var(--text-display));
+      font-weight: 800;
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tighter);
+      color: #fff;
+      margin-bottom: var(--space-6);
+    }
+    .hero-headline span { color: var(--gold-400); }
+    .hero-lead {
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      color: var(--text-on-dark-muted);
+      max-width: 480px;
+      margin-bottom: var(--space-8);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+    .hero-sunburst {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: .9;
+    }
+    .hero-sunburst img { width: 100%; max-width: 420px; filter: drop-shadow(0 20px 48px rgba(244,165,46,.35)); }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-16);
+      padding-top: var(--space-10);
+      border-top: 1px solid var(--border-on-dark);
+    }
+
+    /* ─── Section shells ──────────────────────────────────────── */
+    section { padding: var(--section-y) 0; }
+    .section-label { margin-bottom: var(--space-4); }
+    .section-headline {
+      font-family: var(--font-display);
+      font-size: var(--text-h2);
+      font-weight: 800;
+      line-height: var(--leading-heading);
+      letter-spacing: var(--tracking-tighter);
+      color: var(--text-strong);
+    }
+    .section-headline--light { color: #fff; }
+    .section-lead {
+      font-size: var(--text-md);
+      line-height: var(--leading-relaxed);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-top: var(--space-4);
+    }
+    .section-lead--light { color: var(--text-on-dark-muted); }
+
+    /* ─── Mission ─────────────────────────────────────────────── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+    .mission-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      margin-top: var(--space-8);
+    }
+    .pillar {
+      display: flex;
+      gap: var(--space-4);
+      align-items: flex-start;
+    }
+    .pillar-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-md);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .pillar-icon--gold  { background: var(--gold-100);  color: var(--gold-700); }
+    .pillar-icon--blue  { background: var(--blue-100);  color: var(--blue-700); }
+    .pillar-icon--green { background: var(--green-100); color: var(--green-600); }
+    .pillar-body h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-h5);
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: var(--space-1);
+    }
+    .pillar-body p { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal); }
+
+    .mission-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: var(--space-4);
+    }
+    .mission-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .mission-photo--tall { grid-row: span 2; }
+    .mission-photo-placeholder {
+      width: 100%; height: 100%;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+    .ph--blue   { background: var(--blue-100);  color: var(--blue-600); }
+    .ph--gold   { background: var(--gold-100);  color: var(--gold-700); }
+    .ph--green  { background: var(--green-100); color: var(--green-600);}
+
+    /* ─── Programs ────────────────────────────────────────────── */
+    .programs-bg { background: var(--ink-100); }
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-12);
+    }
+    .program-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-h4);
+      font-weight: 700;
+      color: var(--text-strong);
+      margin: var(--space-4) 0 var(--space-2);
+    }
+    .program-card p { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal); }
+    .program-icon {
+      width: 56px; height: 56px;
+      border-radius: var(--radius-lg);
+      display: grid;
+      place-items: center;
+    }
+    .program-icon--gold  { background: var(--gold-100); color: var(--gold-700); }
+    .program-icon--blue  { background: var(--blue-100); color: var(--blue-700); }
+    .program-icon--green { background: var(--green-100); color: var(--green-600); }
+    .program-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35em;
+      margin-top: var(--space-5);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--blue-600);
+      transition: gap var(--dur-fast) var(--ease-spring);
+    }
+    .program-link:hover { gap: .55em; }
+
+    /* ─── Impact ──────────────────────────────────────────────── */
+    .impact-bg {
+      background: var(--blue-900);
+      color: var(--text-on-dark);
+    }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      margin-top: var(--space-12);
+    }
+    .impact-item {
+      text-align: center;
+      padding: var(--space-6);
+      border: 1px solid var(--border-on-dark);
+      border-radius: var(--radius-card);
+    }
+
+    /* ─── Events ──────────────────────────────────────────────── */
+    .events-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--space-10);
+      gap: var(--space-4);
+    }
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+    .event-card { display: flex; flex-direction: column; }
+    .event-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-h4);
+      font-weight: 700;
+      color: var(--text-strong);
+      margin: var(--space-3) 0 var(--space-2);
+    }
+    .event-card p { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-normal); flex: 1; }
+    .event-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+    .event-meta svg { flex-shrink: 0; color: var(--text-faint); }
+
+    /* ─── Volunteer CTA ───────────────────────────────────────── */
+    .volunteer-bg {
+      background: linear-gradient(135deg, var(--gold-100) 0%, var(--cream) 60%);
+      border-top: 1px solid var(--gold-200);
+      border-bottom: 1px solid var(--gold-200);
+    }
+    .volunteer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+    .volunteer-form { background: var(--paper); border-radius: var(--radius-xl); padding: var(--space-8); box-shadow: var(--shadow-md); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .field { display: flex; flex-direction: column; gap: var(--space-2); }
+    .field label {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-strong);
+    }
+    .field input, .field select, .field textarea {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--text-strong);
+      background: var(--cream);
+      border: 1.5px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--gold-500);
+      box-shadow: 0 0 0 3px rgba(244,165,46,.3);
+    }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .field-full { grid-column: 1 / -1; }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+    }
+    .checkbox-row input[type="checkbox"] {
+      width: 18px; height: 18px;
+      accent-color: var(--blue-700);
+      cursor: pointer;
+    }
+    .checkbox-row label { font-size: var(--text-sm); color: var(--text-body); cursor: pointer; }
+
+    /* ─── Partners ────────────────────────────────────────────── */
+    .partners-bg { background: var(--paper); }
+    .partners-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-8) var(--space-12);
+      margin-top: var(--space-10);
+    }
+    .partner-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-h5);
+      color: var(--ink-400);
+      letter-spacing: var(--tracking-tight);
+    }
+    .partner-logo .mark {
+      width: 40px; height: 40px;
+      border-radius: var(--radius-md);
+      display: grid;
+      place-items: center;
+    }
+    .mark--blue   { background: var(--blue-100);  color: var(--blue-600); }
+    .mark--brick  { background: var(--brick-100); color: var(--brick-600);}
+    .mark--green  { background: var(--green-100); color: var(--green-600);}
+    .mark--gold   { background: var(--gold-100);  color: var(--gold-700); }
+
+    /* ─── Footer ──────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--blue-950);
+      color: var(--text-on-dark);
+      padding: var(--space-16) 0 var(--space-10);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-12);
+      padding-bottom: var(--space-12);
+      border-bottom: 1px solid var(--border-on-dark);
+    }
+    .footer-brand p {
+      font-size: var(--text-sm);
+      color: var(--text-on-dark-muted);
+      line-height: var(--leading-relaxed);
+      margin-top: var(--space-4);
+      max-width: 280px;
+    }
+    .footer-col h5 {
+      font-size: var(--text-eyebrow);
+      font-weight: 700;
+      letter-spacing: var(--tracking-caps);
+      text-transform: uppercase;
+      color: var(--gold-400);
+      margin-bottom: var(--space-4);
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
+    .footer-col a { font-size: var(--text-sm); color: var(--text-on-dark-muted); transition: color var(--dur-fast); }
+    .footer-col a:hover { color: var(--text-on-dark); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-8);
+      font-size: var(--text-sm);
+      color: var(--text-on-dark-muted);
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .footer-social { display: flex; gap: var(--space-4); }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-on-dark);
+      display: grid;
+      place-items: center;
+      color: var(--text-on-dark-muted);
+      transition: background var(--dur-fast), color var(--dur-fast);
+    }
+    .footer-social a:hover { background: var(--blue-800); color: var(--gold-400); }
+
+    /* ─── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      :root { --section-y: 4rem; }
+      .hero-inner, .mission-grid, .volunteer-inner { grid-template-columns: 1fr; gap: var(--space-10); }
+      .hero-sunburst { display: none; }
+      .programs-grid, .events-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; gap: var(--space-4); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Navigation ───────────────────────────────────────────── -->
+<header class="site-nav">
+  <div class="container">
+    <nav class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="Springfield Together home">
+        <img src="assets/logo-horizontal.svg" alt="Springfield Together">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#volunteer">Volunteer</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#volunteer" class="btn btn--secondary btn--pill btn--sm">Donate</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── Hero ─────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow eyebrow--light">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+              <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
+              <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Springfield, MA · Since 2013
+          </span>
+        </div>
+        <h1 class="hero-headline">
+          One community.<br>
+          <span>One step</span><br>
+          at a time.
+        </h1>
+        <p class="hero-lead">
+          Springfield Together unites youth, families, educators, and the C3 Police Unit to build a stronger Springfield — through programs that open doors, spark hope, and keep us connected.
+        </p>
+        <div class="hero-actions">
+          <a href="#programs" class="btn btn--primary btn--lg">See our programs</a>
+          <a href="#volunteer" class="btn btn--secondary btn--lg btn--pill">Donate today</a>
+        </div>
+      </div>
+      <div class="hero-sunburst">
+        <img src="assets/sunburst.svg" alt="">
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="stat-value stat-value--light">40+</div>
+        <div class="stat-label stat-label--light">events every year</div>
+      </div>
+      <div>
+        <div class="stat-value stat-value--light">200</div>
+        <div class="stat-label stat-label--light">holiday boxes given away</div>
+      </div>
+      <div>
+        <div class="stat-value stat-value--light">10+</div>
+        <div class="stat-label stat-label--light">years serving Springfield</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Mission ───────────────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="mission-grid">
+      <div>
+        <div class="section-label">
+          <span class="eyebrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+              <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
+              <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Our mission
+          </span>
+        </div>
+        <h2 class="section-headline" style="margin-top: var(--space-4);">
+          We believe every Springfield family deserves to thrive.
+        </h2>
+        <div class="divider"></div>
+        <p class="section-lead">
+          Founded in 2013, Springfield Together is a grassroots nonprofit bringing youth development, education, and community trust-building together. We work side by side with the C3 Community Policing Unit because safety and belonging go hand in hand.
+        </p>
+
+        <div class="mission-pillars">
+          <div class="pillar">
+            <div class="pillar-icon pillar-icon--gold">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="pillar-body">
+              <h4>Youth development</h4>
+              <p>Mentorship, after-school programs, and safe spaces where young people can grow, lead, and dream big.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon pillar-icon--blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
+            <div class="pillar-body">
+              <h4>Education &amp; opportunity</h4>
+              <p>Tutoring, scholarships, and workshops that open doors — because every kid in Springfield deserves a fair shot.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon pillar-icon--green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <div class="pillar-body">
+              <h4>C3 community partnership</h4>
+              <p>We co-host events with the C3 Police Unit to build trust and show youth that officers are neighbors, not adversaries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mission-visual">
+        <div class="mission-photo mission-photo--tall">
+          <div class="mission-photo-placeholder ph--blue" style="min-height: 340px;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span>Community</span>
+          </div>
+        </div>
+        <div class="mission-photo">
+          <div class="mission-photo-placeholder ph--gold" style="min-height: 150px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+            <span>Education</span>
+          </div>
+        </div>
+        <div class="mission-photo">
+          <div class="mission-photo-placeholder ph--green" style="min-height: 150px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Partnership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Programs ──────────────────────────────────────────────── -->
+<section class="programs-bg" id="programs">
+  <div class="container">
+    <div class="section-label">
+      <span class="eyebrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+          <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
+          <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+          <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        What we do
+      </span>
+    </div>
+    <h2 class="section-headline" style="margin-top: var(--space-4); max-width: 560px;">
+      Programs built for Springfield's families
+    </h2>
+    <p class="section-lead">
+      Every program we run starts with one question: what does this community actually need? Then we show up and build it together.
+    </p>
+
+    <div class="programs-grid">
+      <div class="card card--interactive card--gold program-card">
+        <div class="program-icon program-icon--gold">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Youth Mentorship</h3>
+        <p>One-on-one mentoring, group workshops, and leadership camps that give Springfield's young people the tools and confidence to build their futures.</p>
+        <a href="#volunteer" class="program-link">
+          Get involved
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card card--interactive card--blue program-card">
+        <div class="program-icon program-icon--blue">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <h3>Education Support</h3>
+        <p>Free tutoring, SAT prep, scholarship guidance, and digital literacy classes for students and adults who want to keep learning.</p>
+        <a href="#volunteer" class="program-link">
+          Learn more
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card card--interactive card--green program-card">
+        <div class="program-icon program-icon--green">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>C3 Bridge Events</h3>
+        <p>Holiday giveaways, cookouts, and basketball nights co-hosted with the Springfield C3 Police Unit — building trust one interaction at a time.</p>
+        <a href="#events" class="program-link">
+          See events
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card card--interactive program-card">
+        <div class="program-icon" style="background: var(--brick-100); color: var(--brick-600);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h3>Family Resource Hub</h3>
+        <p>Connecting families to food pantries, emergency aid, housing support, and city services — with real people ready to help navigate the process.</p>
+        <a href="#volunteer" class="program-link">
+          Find support
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card card--interactive program-card">
+        <div class="program-icon" style="background: var(--blue-100); color: var(--blue-600);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h3>Job Readiness</h3>
+        <p>Resume workshops, mock interviews, and employer connections that help Springfield residents — especially youth — land their first real opportunity.</p>
+        <a href="#volunteer" class="program-link">
+          Get started
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="card card--interactive card--feature program-card">
+        <div class="program-icon program-icon--gold">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <h3>Holiday Giveaway</h3>
+        <p>Our flagship annual event — 200+ gift boxes, food, music, and the whole community together. The night that reminds us what Springfield is made of.</p>
+        <a href="#events" class="program-link">
+          Learn more
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Impact ─────────────────────────────────────────────────── -->
+<section class="impact-bg">
+  <div class="container" style="text-align: center;">
+    <span class="eyebrow eyebrow--light">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+        <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
+        <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+        <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+        <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Our impact
+    </span>
+    <h2 class="section-headline section-headline--light" style="margin-top: var(--space-4);">
+      Real numbers. Real neighbors.
+    </h2>
+    <p class="section-lead section-lead--light" style="margin: var(--space-4) auto 0;">
+      Every figure here represents a real person in Springfield who showed up — and found something waiting for them.
+    </p>
+    <div class="impact-grid">
+      <div class="impact-item">
+        <div class="stat-value stat-value--light">40+</div>
+        <div class="stat-label stat-label--light">community events per year</div>
+      </div>
+      <div class="impact-item">
+        <div class="stat-value" style="color: var(--gold-400);">200</div>
+        <div class="stat-label stat-label--light">holiday gift boxes given away</div>
+      </div>
+      <div class="impact-item">
+        <div class="stat-value" style="color: var(--green-300);">500+</div>
+        <div class="stat-label stat-label--light">youth served annually</div>
+      </div>
+      <div class="impact-item">
+        <div class="stat-value" style="color: var(--brick-400);">10+</div>
+        <div class="stat-label stat-label--light">years in Springfield</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Events ─────────────────────────────────────────────────── -->
+<section id="events">
+  <div class="container">
+    <div class="events-header">
+      <div>
+        <span class="eyebrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+            <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
+            <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Upcoming events
+        </span>
+        <h2 class="section-headline" style="margin-top: var(--space-4);">Mark your calendar</h2>
+      </div>
+      <a href="#volunteer" class="btn btn--outline">View all events</a>
+    </div>
+
+    <div class="events-grid">
+      <div class="card card--interactive card--gold event-card">
+        <span class="badge badge--gold"><span class="dot"></span>Dec 14</span>
+        <h3>Citywide Christmas Party</h3>
+        <p>Gifts, food, music, and the C3 unit — all in one unforgettable night. Over 200 families come together to celebrate the season.</p>
+        <div class="event-meta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Saturday, Dec 14 · 4–8 PM
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Springfield Community Center
+        </div>
+      </div>
+
+      <div class="card card--interactive event-card">
+        <span class="badge badge--blue">C3 Partnership</span>
+        <h3>Community Basketball Night</h3>
+        <p>A night of pickup basketball with C3 officers, music, and good vibes. All ages welcome — come play or just watch and cheer.</p>
+        <div class="event-meta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Fri, Jan 10 · 6–9 PM
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Blunt Park
+        </div>
+      </div>
+
+      <div class="card card--interactive event-card">
+        <span class="badge badge--green"><span class="dot"></span>Registration open</span>
+        <h3>Spring Job Fair</h3>
+        <p>Local employers, free resume review, and interview coaching — all in one morning. Bring copies of your resume and an open mind.</p>
+        <div class="event-meta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          Sat, Mar 8 · 9 AM–1 PM
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: auto;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Brightwood Library
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Volunteer / Get Involved ──────────────────────────────── -->
+<section class="volunteer-bg" id="volunteer">
+  <div class="container">
+    <div class="volunteer-inner">
+      <div>
+        <span class="eyebrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+            <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
+            <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Get involved
+        </span>
+        <h2 class="section-headline" style="margin-top: var(--space-4);">
+          You don't have to wait for change — you can be part of it.
+        </h2>
+        <div class="divider"></div>
+        <p class="section-lead">
+          Whether you can give an hour a month or show up to every event, Springfield Together has a place for you. Volunteers are the backbone of everything we do.
+        </p>
+
+        <div style="margin-top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-4);">
+          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Volunteer at events — setup, games, food service
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Mentor a young person in your field
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Donate to keep programs running year-round
+          </div>
+          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Spread the word — share our events with neighbors
+          </div>
+        </div>
+      </div>
+
+      <div class="volunteer-form" id="contact">
+        <h3 style="font-family: var(--font-display); font-size: var(--text-h4); font-weight: 700; color: var(--text-strong); margin-bottom: var(--space-6);">Connect with us</h3>
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row" style="margin-bottom: var(--space-4);">
+            <div class="field">
+              <label for="fname">First name</label>
+              <input type="text" id="fname" name="fname" placeholder="Maria" required>
+            </div>
+            <div class="field">
+              <label for="lname">Last name</label>
+              <input type="text" id="lname" name="lname" placeholder="Andrea" required>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-4);">
+            <div class="field">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="(413) 555-0100">
+            </div>
+            <div class="field">
+              <label for="interest">I'd like to…</label>
+              <select id="interest" name="interest">
+                <option value="">Choose one</option>
+                <option>Volunteer at events</option>
+                <option>Mentor a young person</option>
+                <option>Make a donation</option>
+                <option>Partner with Springfield Together</option>
+                <option>Get help from a program</option>
+                <option>Just stay in touch</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">Anything else?</label>
+              <textarea id="message" name="message" placeholder="Tell us a little about you…"></textarea>
+            </div>
+          </div>
+          <div class="checkbox-row" style="margin-bottom: var(--space-6);">
+            <input type="checkbox" id="newsletter" name="newsletter" checked>
+            <label for="newsletter">Add me to the newsletter</label>
+          </div>
+          <button type="submit" class="btn btn--secondary btn--pill" style="width: 100%;">Send message</button>
+        </form>
+        <div id="form-success" style="display: none; text-align: center; padding: var(--space-8) 0; color: var(--green-600);">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-3);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <p style="font-family: var(--font-display); font-weight: 700; font-size: var(--text-h5); color: var(--text-strong);">You're all set!</p>
+          <p style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-2);">We'll be in touch soon. Thank you for being part of Springfield Together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Partners ──────────────────────────────────────────────── -->
+<section class="partners-bg" style="padding: var(--space-16) 0;">
+  <div class="container" style="text-align: center;">
+    <p style="font-size: var(--text-eyebrow); font-weight: 700; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--text-faint);">
+      Trusted partners &amp; supporters
+    </p>
+    <div class="partners-logos">
+      <div class="partner-logo">
+        <div class="mark mark--blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        C3 Police Unit
+      </div>
+      <div class="partner-logo">
+        <div class="mark mark--green">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        City of Springfield
+      </div>
+      <div class="partner-logo">
+        <div class="mark mark--gold">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        Springfield Schools
+      </div>
+      <div class="partner-logo">
+        <div class="mark mark--brick">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        Local Faith Communities
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-horizontal-light.svg" alt="Springfield Together" height="44">
+        <p>A community nonprofit serving Springfield, MA since 2013. Youth development, education, and bringing families and the C3 Police Unit together — one step at a time.</p>
+        <div class="footer-social" style="margin-top: var(--space-5);">
+          <a href="#" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter / X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M4 20L20 4"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Programs</h5>
+        <ul>
+          <li><a href="#programs">Youth Mentorship</a></li>
+          <li><a href="#programs">Education Support</a></li>
+          <li><a href="#programs">C3 Bridge Events</a></li>
+          <li><a href="#programs">Family Resource Hub</a></li>
+          <li><a href="#programs">Job Readiness</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Get involved</h5>
+        <ul>
+          <li><a href="#volunteer">Volunteer</a></li>
+          <li><a href="#volunteer">Donate</a></li>
+          <li><a href="#volunteer">Partner with us</a></li>
+          <li><a href="#events">Upcoming events</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@springfieldtogether.org">info@springfieldtogether.org</a></li>
+          <li><a href="tel:+14135550100">(413) 555-0100</a></li>
+          <li><a href="#contact">Send a message</a></li>
+          <li style="color: var(--text-on-dark-muted); font-size: var(--text-sm); padding-top: var(--space-2);">Springfield, Massachusetts</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Springfield Together, Inc. · 501(c)(3) nonprofit · EIN 00-0000000</p>
+      <div style="display: flex; gap: var(--space-5);">
+        <a href="#">Privacy</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
