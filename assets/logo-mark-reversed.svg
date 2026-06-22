@@ -1,0 +1,18 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Springfield Together">
+  <defs>
+    <clipPath id="stSkyR"><rect x="0" y="0" width="80" height="52"></rect></clipPath>
+  </defs>
+  <rect width="80" height="80" rx="20" fill="#F4F1E8"></rect>
+  <g clip-path="url(#stSkyR)">
+    <circle cx="40" cy="52" r="15" fill="#F4A52E"></circle>
+    <g stroke="#F4A52E" stroke-width="3" stroke-linecap="round">
+      <line x1="40" y1="14" x2="40" y2="22"></line>
+      <line x1="22.5" y1="19.5" x2="27" y2="25.5"></line>
+      <line x1="57.5" y1="19.5" x2="53" y2="25.5"></line>
+      <line x1="13" y1="33" x2="20" y2="35.5"></line>
+      <line x1="67" y1="33" x2="60" y2="35.5"></line>
+    </g>
+  </g>
+  <rect x="15" y="56" width="50" height="3.6" rx="1.8" fill="#16395C"></rect>
+  <rect x="23" y="63" width="34" height="3.6" rx="1.8" fill="#16395C" opacity="0.55"></rect>
+</svg>
