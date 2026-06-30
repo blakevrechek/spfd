@@ -3,8 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Springfield Together — Youth, Education & Community</title>
+  <title>Springfield Together — Youth, Education & Community in Springfield, MA</title>
   <meta name="description" content="Springfield Together unites youth, families, and the C3 Police Unit to build a stronger Springfield, MA — one step at a time.">
+  <link rel="canonical" href="https://springfieldtogether.org/">
+  <meta name="theme-color" content="#16395C">
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Springfield Together">
+  <meta property="og:title" content="Springfield Together — Youth, Education & Community">
+  <meta property="og:description" content="A Springfield, MA nonprofit working with youth, families, and the C3 Police Unit since 2013.">
+  <meta property="og:url" content="https://springfieldtogether.org/">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Springfield Together">
+  <meta name="twitter:description" content="Youth, education, and community in Springfield, MA since 2013.">
+  <meta name="twitter:image" content="assets/og-image.png">
+
+  <!-- Favicons (drop assets in /handoff/assets/) -->
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/logo-mark.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,6 +103,7 @@
       --dur-fast: 140ms; --dur-base: 200ms; --dur-slow: 320ms;
       --ease-out: cubic-bezier(.22,.61,.36,1);
       --ease-spring: cubic-bezier(.34,1.56,.64,1);
+      --ease: cubic-bezier(.2,.7,.2,1);
     }
 
     /* ─── Reset ───────────────────────────────────────────────── */
@@ -101,6 +120,17 @@
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; font: inherit; border: none; background: none; }
+
+    /* ─── Focus ───────────────────────────────────────────────── */
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 2px solid var(--gold-500);
+      outline-offset: 3px;
+      border-radius: var(--radius-xs);
+    }
+    .hero :focus-visible,
+    .impact-bg :focus-visible,
+    .site-footer :focus-visible { outline-color: var(--gold-400); }
 
     /* ─── Utilities ───────────────────────────────────────────── */
     .container {
@@ -662,21 +692,214 @@
     }
     .footer-social a:hover { background: var(--blue-800); color: var(--gold-400); }
 
+    /* ─── Volunteer roles ───────────────────────────────────── */
+    .vol-roles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+    .vol-role {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+    }
+    .vol-role:hover {
+      border-color: var(--gold-300);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .vol-role-head {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .vol-role-icon {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .vol-role h4 {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-strong);
+    }
+    .vol-role p {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: var(--leading-normal);
+      flex: 1;
+    }
+    .vol-role-meta {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      color: var(--gold-700);
+      text-transform: uppercase;
+    }
+    .vol-roles-foot {
+      margin-top: var(--space-6);
+      padding: var(--space-4) var(--space-5);
+      background: rgba(255,255,255,.6);
+      border-left: 3px solid var(--brick-500);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+      color: var(--text-body);
+      line-height: var(--leading-normal);
+    }
+
+    /* ─── Donate ────────────────────────────────────────────── */
+    .donate-bg {
+      background:
+        radial-gradient(ellipse 50% 50% at 100% 0%, rgba(244,165,46,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 0% 100%, rgba(44,102,153,.08) 0%, transparent 60%),
+        var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .donate-bg::after {
+      content: '';
+      position: absolute;
+      top: -180px;
+      right: -120px;
+      width: 420px;
+      height: 420px;
+      background: url('assets/sunburst.svg') center/contain no-repeat;
+      opacity: .08;
+      pointer-events: none;
+    }
+    .donate-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--space-16);
+      align-items: start;
+      position: relative;
+    }
+    .donate-levels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      margin-top: var(--space-8);
+    }
+    .donate-level {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: var(--space-4);
+    }
+    .donate-level strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: var(--text-h4);
+      font-weight: 800;
+      color: var(--gold-700);
+      margin-bottom: var(--space-1);
+    }
+    .donate-level span {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .donate-foot {
+      margin-top: var(--space-6);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: var(--leading-normal);
+      max-width: 540px;
+    }
+    .donate-foot a { color: var(--blue-700); border-bottom: 1px dotted var(--blue-300); }
+    .donate-foot a:hover { color: var(--blue-900); border-bottom-color: var(--blue-500); }
+    .donate-card {
+      background: var(--surface-dark);
+      color: var(--text-on-dark);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+    .donate-card h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-h4);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--space-3);
+    }
+    .donate-card p {
+      font-size: var(--text-sm);
+      color: var(--text-on-dark-muted);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-normal);
+    }
+    .donate-card a { color: var(--gold-400); }
+    .donate-card a:hover { color: var(--gold-300); }
+    .donate-card .btn { width: 100%; }
+    .donate-platform-slot {
+      border: 1.5px dashed rgba(244,165,46,.4);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      font-size: var(--text-sm);
+      color: var(--text-on-dark-muted);
+      margin-bottom: var(--space-5);
+      line-height: var(--leading-normal);
+    }
+    .donate-tax-note {
+      display: block;
+      margin-top: var(--space-4);
+      font-size: 12px;
+      color: var(--text-on-dark-muted);
+      line-height: 1.45;
+    }
+
+    /* ─── Scroll reveal ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── Reduced motion ────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .card--interactive:hover { transform: none; }
+    }
+
     /* ─── Responsive ──────────────────────────────────────────── */
     @media (max-width: 900px) {
       :root { --section-y: 4rem; }
-      .hero-inner, .mission-grid, .volunteer-inner { grid-template-columns: 1fr; gap: var(--space-10); }
+      .hero-inner, .mission-grid, .volunteer-inner, .donate-grid { grid-template-columns: 1fr; gap: var(--space-10); }
+      .vol-roles { grid-template-columns: 1fr; }
       .hero-sunburst { display: none; }
       .programs-grid, .events-grid { grid-template-columns: 1fr; }
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
       .form-row { grid-template-columns: 1fr; }
+      .donate-bg::after { width: 280px; height: 280px; top: -100px; right: -60px; }
     }
     @media (max-width: 600px) {
       .impact-grid { grid-template-columns: 1fr 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .hero-stats { grid-template-columns: 1fr; gap: var(--space-4); }
+      .donate-levels { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -686,7 +909,7 @@
 <header class="site-nav">
   <div class="container">
     <nav class="nav-inner">
-      <a href="#" class="nav-logo" aria-label="Springfield Together home">
+      <a href="#home" class="nav-logo" aria-label="Springfield Together home">
         <img src="assets/logo-horizontal.svg" alt="Springfield Together">
       </a>
       <ul class="nav-links">
@@ -694,10 +917,11 @@
         <li><a href="#programs">Programs</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#volunteer">Volunteer</a></li>
+        <li><a href="#donate">Donate</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="#volunteer" class="btn btn--secondary btn--pill btn--sm">Donate</a>
+        <a href="#donate" class="btn btn--secondary btn--pill btn--sm">Donate</a>
       </div>
     </nav>
   </div>
@@ -729,7 +953,7 @@
         </p>
         <div class="hero-actions">
           <a href="#programs" class="btn btn--primary btn--lg">See our programs</a>
-          <a href="#volunteer" class="btn btn--secondary btn--lg btn--pill">Donate today</a>
+          <a href="#donate" class="btn btn--secondary btn--lg btn--pill">Donate today</a>
         </div>
       </div>
       <div class="hero-sunburst">
@@ -739,15 +963,15 @@
 
     <div class="hero-stats">
       <div>
-        <div class="stat-value stat-value--light">40+</div>
+        <div class="stat-value stat-value--light" data-count="40" data-suffix="+">40+</div>
         <div class="stat-label stat-label--light">events every year</div>
       </div>
       <div>
-        <div class="stat-value stat-value--light">200</div>
+        <div class="stat-value stat-value--light" data-count="200" data-suffix="">200</div>
         <div class="stat-label stat-label--light">holiday boxes given away</div>
       </div>
       <div>
-        <div class="stat-value stat-value--light">10+</div>
+        <div class="stat-value stat-value--light" data-count="10" data-suffix="+">10+</div>
         <div class="stat-label stat-label--light">years serving Springfield</div>
       </div>
     </div>
@@ -977,19 +1201,19 @@
     </p>
     <div class="impact-grid">
       <div class="impact-item">
-        <div class="stat-value stat-value--light">40+</div>
+        <div class="stat-value stat-value--light" data-count="40" data-suffix="+">40+</div>
         <div class="stat-label stat-label--light">community events per year</div>
       </div>
       <div class="impact-item">
-        <div class="stat-value" style="color: var(--gold-400);">200</div>
+        <div class="stat-value" style="color: var(--gold-400);" data-count="200" data-suffix="">200</div>
         <div class="stat-label stat-label--light">holiday gift boxes given away</div>
       </div>
       <div class="impact-item">
-        <div class="stat-value" style="color: var(--green-300);">500+</div>
+        <div class="stat-value" style="color: var(--green-300);" data-count="500" data-suffix="+">500+</div>
         <div class="stat-label stat-label--light">youth served annually</div>
       </div>
       <div class="impact-item">
-        <div class="stat-value" style="color: var(--brick-400);">10+</div>
+        <div class="stat-value" style="color: var(--brick-400);" data-count="10" data-suffix="+">10+</div>
         <div class="stat-label stat-label--light">years in Springfield</div>
       </div>
     </div>
@@ -1012,7 +1236,7 @@
         </span>
         <h2 class="section-headline" style="margin-top: var(--space-4);">Mark your calendar</h2>
       </div>
-      <a href="#volunteer" class="btn btn--outline">View all events</a>
+      <a href="#contact" class="btn btn--outline">Ask about an event</a>
     </div>
 
     <div class="events-grid">
@@ -1067,11 +1291,11 @@
   </div>
 </section>
 
-<!-- ─── Volunteer / Get Involved ──────────────────────────────── -->
-<section class="volunteer-bg" id="volunteer">
+<!-- ─── Donate ────────────────────────────────────────────────── -->
+<section class="donate-bg" id="donate">
   <div class="container">
-    <div class="volunteer-inner">
-      <div>
+    <div class="donate-grid">
+      <div class="donate-content reveal">
         <span class="eyebrow">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
             <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
@@ -1079,55 +1303,161 @@
             <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
             <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
           </svg>
-          Get involved
+          Support our work
+        </span>
+        <h2 class="section-headline" style="margin-top: var(--space-4);">
+          Your gift keeps Springfield together.
+        </h2>
+        <div class="divider"></div>
+        <p class="section-lead">
+          Every dollar goes directly into programs that serve Springfield's youth and families — the holiday giveaway, the Inter Produce food box partnership, mentorship, and C3 community events.
+        </p>
+
+        <div class="donate-levels">
+          <div class="donate-level">
+            <strong>$25</strong>
+            <span>fills one holiday gift box for a Springfield family</span>
+          </div>
+          <div class="donate-level">
+            <strong>$50</strong>
+            <span>covers a week of after-school program snacks</span>
+          </div>
+          <div class="donate-level">
+            <strong>$100</strong>
+            <span>sponsors a youth mentor pairing for a month</span>
+          </div>
+        </div>
+
+        <p class="donate-foot">
+          Prefer to give another way? Mail a check to <strong>Springfield Together, Inc., 185 Belmont Ave, Springfield, MA 01108</strong>, or <a href="#contact">reach out</a> to set up monthly giving or an in-kind donation.
+        </p>
+      </div>
+
+      <div class="donate-card reveal">
+        <h3>Give securely online</h3>
+        <!--
+          DROP-IN: replace .donate-platform-slot below with the chosen platform's embed.
+          Recommendation per handoff brief: Givebutter (free platform fee with donor tips on,
+          built-in donor CRM and email blasts). Fallback: Donorbox.
+          Example Givebutter embed:
+            <div id="givebutter-widget"></div>
+            <script src="https://givebutter.com/js/widget.js"></script>
+            <script>new Givebutter.Widget({account: 'YOUR_HANDLE'})</script>
+        -->
+        <div class="donate-platform-slot">
+          Our online donation widget is being configured. Once set up, the
+          embed lands here and donors can give directly on this page with
+          card, ACH, or Apple/Google Pay.
+        </div>
+        <p>In the meantime, you can email us to give, or mail a check using the address shown.</p>
+        <a class="btn btn--secondary btn--pill btn--lg" href="mailto:springfieldtogetherinc@gmail.com?subject=Donation%20to%20Springfield%20Together">Email us to give</a>
+        <span class="donate-tax-note">
+          Springfield Together, Inc. operates as a Massachusetts nonprofit corporation. Tax-deductibility status and EIN will be confirmed on the receipt the donation platform sends.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Volunteer / Get Involved ──────────────────────────────── -->
+<section class="volunteer-bg" id="volunteer">
+  <div class="container">
+    <div class="volunteer-inner">
+      <div class="reveal">
+        <span class="eyebrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+            <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
+            <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Volunteer
         </span>
         <h2 class="section-headline" style="margin-top: var(--space-4);">
           You don't have to wait for change — you can be part of it.
         </h2>
         <div class="divider"></div>
         <p class="section-lead">
-          Whether you can give an hour a month or show up to every event, Springfield Together has a place for you. Volunteers are the backbone of everything we do.
+          Volunteers are the backbone of everything we do. Pick the role that fits — and tell us about yourself on the form. We follow up personally within a week.
         </p>
 
-        <div style="margin-top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-4);">
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        <div class="vol-roles">
+          <div class="vol-role">
+            <div class="vol-role-head">
+              <div class="vol-role-icon" style="background: var(--gold-100); color: var(--gold-700);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <h4>Event volunteer</h4>
             </div>
-            Volunteer at events — setup, games, food service
+            <p>Setup, family check-in, food service, kids' activities at the holiday party, food giveaway, and C3 events.</p>
+            <span class="vol-role-meta">2–4 hrs · per event</span>
           </div>
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+
+          <div class="vol-role">
+            <div class="vol-role-head">
+              <div class="vol-role-icon" style="background: var(--blue-100); color: var(--blue-700);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <h4>Mentor</h4>
             </div>
-            Mentor a young person in your field
+            <p>Pair with a Springfield young person to share your career, your craft, or just a steady hour of presence each week.</p>
+            <span class="vol-role-meta">1–2 hrs · weekly</span>
           </div>
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+
+          <div class="vol-role">
+            <div class="vol-role-head">
+              <div class="vol-role-icon" style="background: var(--green-100); color: var(--green-600);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <h4>Skill-based</h4>
             </div>
-            Donate to keep programs running year-round
+            <p>Lend a few hours of legal, accounting, design, photography, or social-media work. We'll match you to a real need.</p>
+            <span class="vol-role-meta">Project · flexible</span>
           </div>
-          <div style="display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); color: var(--text-body);">
-            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--green-100); color: var(--green-600); display: grid; place-items: center; flex-shrink: 0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+
+          <div class="vol-role">
+            <div class="vol-role-head">
+              <div class="vol-role-icon" style="background: var(--brick-100); color: var(--brick-600);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <h4>Bring a group</h4>
             </div>
-            Spread the word — share our events with neighbors
+            <p>Company, congregation, sports team, or classroom? Sponsor an event, staff a station, or host a drive together.</p>
+            <span class="vol-role-meta">Group · one-time or recurring</span>
           </div>
         </div>
+
+        <p class="vol-roles-foot">
+          <strong>Just want to help once?</strong> That counts. The Citywide Christmas Party alone takes 40+ volunteers each year — most of them show up for one shift and come back the next year because it's the best night Springfield has.
+        </p>
       </div>
 
       <div class="volunteer-form" id="contact">
         <h3 style="font-family: var(--font-display); font-size: var(--text-h4); font-weight: 700; color: var(--text-strong); margin-bottom: var(--space-6);">Connect with us</h3>
-        <form onsubmit="handleSubmit(event)">
+        <!--
+          FORM ENDPOINT: replace YOUR_FORM_ID below with the real Formspree (or Tally) form ID.
+          Submissions arrive in the platform dashboard and, with Formspree, by email to the
+          address on the account. Until the endpoint is set, the form falls back to a mailto.
+        -->
+        <form id="contact-form"
+              action="https://formspree.io/f/YOUR_FORM_ID"
+              method="POST">
           <div class="form-row" style="margin-bottom: var(--space-4);">
             <div class="field">
               <label for="fname">First name</label>
-              <input type="text" id="fname" name="fname" placeholder="Maria" required>
+              <input type="text" id="fname" name="first_name" placeholder="Maria" required>
             </div>
             <div class="field">
               <label for="lname">Last name</label>
-              <input type="text" id="lname" name="lname" placeholder="Andrea" required>
+              <input type="text" id="lname" name="last_name" placeholder="Andrea" required>
             </div>
           </div>
           <div style="display: flex; flex-direction: column; gap: var(--space-4); margin-bottom: var(--space-4);">
@@ -1137,7 +1467,7 @@
             </div>
             <div class="field">
               <label for="phone">Phone (optional)</label>
-              <input type="tel" id="phone" name="phone" placeholder="(413) 555-0100">
+              <input type="tel" id="phone" name="phone" placeholder="Your phone number" autocomplete="tel">
             </div>
             <div class="field">
               <label for="interest">I'd like to…</label>
@@ -1157,12 +1487,20 @@
             </div>
           </div>
           <div class="checkbox-row" style="margin-bottom: var(--space-6);">
-            <input type="checkbox" id="newsletter" name="newsletter" checked>
+            <input type="checkbox" id="newsletter" name="newsletter" value="yes" checked>
             <label for="newsletter">Add me to the newsletter</label>
           </div>
-          <button type="submit" class="btn btn--secondary btn--pill" style="width: 100%;">Send message</button>
+          <!-- Honeypot field — bots fill this, humans don't see it -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+          <input type="hidden" name="_subject" value="New message from springfieldtogether.org">
+          <button type="submit" id="contact-submit" class="btn btn--secondary btn--pill" style="width: 100%;">Send message</button>
+          <p id="form-error" role="alert" style="display:none; margin-top: var(--space-3); font-size: var(--text-sm); color: var(--brick-600);">
+            Something went wrong sending that. Please email
+            <a href="mailto:springfieldtogetherinc@gmail.com" style="color: var(--brick-600); text-decoration: underline;">springfieldtogetherinc@gmail.com</a>
+            and we'll get back to you.
+          </p>
         </form>
-        <div id="form-success" style="display: none; text-align: center; padding: var(--space-8) 0; color: var(--green-600);">
+        <div id="form-success" style="display: none; text-align: center; padding: var(--space-8) 0; color: var(--green-700);">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-3);"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           <p style="font-family: var(--font-display); font-weight: 700; font-size: var(--text-h5); color: var(--text-strong);">You're all set!</p>
           <p style="font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-2);">We'll be in touch soon. Thank you for being part of Springfield Together.</p>
@@ -1215,14 +1553,11 @@
         <img src="assets/logo-horizontal-light.svg" alt="Springfield Together" height="44">
         <p>A community nonprofit serving Springfield, MA since 2013. Youth development, education, and bringing families and the C3 Police Unit together — one step at a time.</p>
         <div class="footer-social" style="margin-top: var(--space-5);">
-          <a href="#" aria-label="Facebook">
+          <a href="https://www.facebook.com/springfieldtogether" target="_blank" rel="noopener" aria-label="Springfield Together on Facebook">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
-          <a href="#" aria-label="Instagram">
+          <a href="https://www.instagram.com/springbackspringfield" target="_blank" rel="noopener" aria-label="Springfield Together on Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="#" aria-label="Twitter / X">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M4 20L20 4"/></svg>
           </a>
         </div>
       </div>
@@ -1242,8 +1577,8 @@
         <h5>Get involved</h5>
         <ul>
           <li><a href="#volunteer">Volunteer</a></li>
-          <li><a href="#volunteer">Donate</a></li>
-          <li><a href="#volunteer">Partner with us</a></li>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="#contact">Partner with us</a></li>
           <li><a href="#events">Upcoming events</a></li>
         </ul>
       </div>
@@ -1251,43 +1586,135 @@
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="mailto:info@springfieldtogether.org">info@springfieldtogether.org</a></li>
-          <li><a href="tel:+14135550100">(413) 555-0100</a></li>
+          <li><a href="mailto:springfieldtogetherinc@gmail.com">springfieldtogetherinc@gmail.com</a></li>
+          <li><a href="tel:+14137879955">(413) 787-9955</a></li>
+          <li style="color: var(--text-on-dark-muted); font-size: var(--text-sm);">185 Belmont Ave<br>Springfield, MA 01108</li>
           <li><a href="#contact">Send a message</a></li>
-          <li style="color: var(--text-on-dark-muted); font-size: var(--text-sm); padding-top: var(--space-2);">Springfield, Massachusetts</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 Springfield Together, Inc. · 501(c)(3) nonprofit · EIN 00-0000000</p>
+      <p>© 2026 Springfield Together, Inc. · Springfield, Massachusetts</p>
       <div style="display: flex; gap: var(--space-5);">
-        <a href="#">Privacy</a>
-        <a href="#">Accessibility</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="accessibility.html">Accessibility</a>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    const form = e.target;
-    form.style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-  }
+(function () {
+  'use strict';
 
-  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      const id = a.getAttribute('href').slice(1);
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ── Smooth scroll for same-page anchors ────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1);
       if (!id) return;
-      const el = document.getElementById(id);
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      var el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'start'
+      });
     });
   });
+
+  // ── Contact form: real submission to Formspree (or fallback) ──
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      var action = form.getAttribute('action') || '';
+      var success = document.getElementById('form-success');
+      var error = document.getElementById('form-error');
+      var btn = document.getElementById('contact-submit');
+
+      // If the endpoint hasn't been set yet, fall back to a mailto so
+      // the user is never silently dropped.
+      if (action.indexOf('YOUR_FORM_ID') !== -1) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var body = [];
+        data.forEach(function (v, k) {
+          if (k.charAt(0) === '_') return;
+          body.push(k + ': ' + v);
+        });
+        var mailto = 'mailto:springfieldtogetherinc@gmail.com'
+          + '?subject=' + encodeURIComponent('Message from springfieldtogether.org')
+          + '&body=' + encodeURIComponent(body.join('\n'));
+        window.location.href = mailto;
+        return;
+      }
+
+      e.preventDefault();
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      if (error) error.style.display = 'none';
+
+      fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('submit failed');
+          form.style.display = 'none';
+          if (success) success.style.display = 'block';
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = 'Send message'; }
+          if (error) error.style.display = 'block';
+        });
+    });
+  }
+
+  // ── Scroll reveals (gated by reduced motion) ──────────────
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var targets = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry, i) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          setTimeout(function () { el.classList.add('is-visible'); }, i * 60);
+          io.unobserve(el);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    targets.forEach(function (t) { io.observe(t); });
+  }
+
+  // ── One-time stat counters ────────────────────────────────
+  function animateCount(el, target, suffix, duration) {
+    if (reduceMotion) { el.textContent = target + suffix; return; }
+    var start = performance.now();
+    (function step(now) {
+      var p = Math.min(1, (now - start) / duration);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var counters = document.querySelectorAll('[data-count]');
+    counters.forEach(function (c) { c.textContent = '0' + (c.getAttribute('data-suffix') || ''); });
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        animateCount(el, target, suffix, 1400);
+        co.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(function (c) { co.observe(c); });
+  }
+})();
 </script>
 </body>
 </html>
