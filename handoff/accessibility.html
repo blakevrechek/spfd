@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessibility Statement — Springfield Together</title>
+  <meta name="description" content="Springfield Together's commitment to making this website usable for everyone.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://springfieldtogether.org/accessibility.html">
+  <meta name="theme-color" content="#16395C">
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-700: #16395C; --blue-900: #0E2438; --blue-950: #091824;
+      --gold-400: #F7B64E; --gold-500: #F4A52E; --gold-700: #B8650F;
+      --ink-500: #6E7068; --ink-700: #3F413B; --ink-950: #1A1B18;
+      --cream: #F7F4EC; --paper: #FFFFFF;
+      --line: #E6E2D6;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Public Sans', system-ui, -apple-system, sans-serif;
+      color: var(--ink-700);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue-700); }
+    a:focus-visible { outline: 2px solid var(--gold-500); outline-offset: 3px; border-radius: 4px; }
+    header {
+      background: var(--blue-900);
+      color: #fff;
+      padding: 24px 0;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    header a { color: var(--gold-400); font-weight: 600; text-decoration: none; font-size: 14px; }
+    main { padding: 56px 0 80px; }
+    h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--ink-950);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .updated {
+      font-size: 14px;
+      color: var(--ink-500);
+      margin-bottom: 32px;
+    }
+    h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--ink-950);
+      margin: 32px 0 10px;
+      letter-spacing: -.01em;
+    }
+    p, li { font-size: 1rem; margin-bottom: 12px; }
+    ul { padding-left: 22px; margin-bottom: 12px; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      font-size: 14px;
+      color: var(--ink-500);
+      text-align: center;
+    }
+    footer a { text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="index.html">← Back to springfieldtogether.org</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Accessibility Statement</h1>
+    <p class="updated">Last updated: TBD — to be confirmed before public launch.</p>
+
+    <p>Springfield Together is committed to making this website usable for everyone — including people who navigate with a keyboard, a screen reader, voice control, or any other assistive technology.</p>
+
+    <h2>What we aim for</h2>
+    <p>We target the <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">Web Content Accessibility Guidelines (WCAG) 2.1 Level AA</a> as a baseline. That means:</p>
+    <ul>
+      <li>Color contrast that meets AA on body text and interactive elements.</li>
+      <li>Visible keyboard focus on every link, button, and form field.</li>
+      <li>Form labels tied to their inputs, and form errors announced clearly.</li>
+      <li>Motion that respects the <code>prefers-reduced-motion</code> system setting.</li>
+      <li>Real alt text on every photograph (added as photos are loaded in).</li>
+      <li>Semantic HTML so screen readers can navigate by heading and landmark.</li>
+    </ul>
+
+    <h2>Known gaps</h2>
+    <p>This site is in active development. Items we are still working on:</p>
+    <ul>
+      <li>Some images currently use icon placeholders. They will be replaced with real photographs and descriptive alt text.</li>
+      <li>The donation widget is configured by a third-party platform; we will document its accessibility level once the platform is selected.</li>
+      <li>Spanish-language version is under consideration; until then, page language is English.</li>
+    </ul>
+
+    <h2>If something doesn't work for you</h2>
+    <p>If you run into a barrier on this site — anything from a hard-to-read color to a form you can't submit — please tell us. We treat accessibility issues as bugs and fix them.</p>
+    <p>Email <a href="mailto:springfieldtogetherinc@gmail.com">springfieldtogetherinc@gmail.com</a>, call <a href="tel:+14137879955">(413) 787-9955</a>, or write to Springfield Together, Inc., 185 Belmont Ave, Springfield, MA 01108. Let us know the page, the browser or assistive technology you're using, and what went wrong. We'll respond within five business days.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="y">2026</span> Springfield Together, Inc. · <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
