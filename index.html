@@ -26,7 +26,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Lora:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ─── Tokens ──────────────────────────────────────────────── */
@@ -38,9 +38,10 @@
       --blue-300:  #98BAD9; --blue-400: #5E8DBC; --blue-500: #2C6699;
       --blue-600:  #1E4E78; --blue-700: #16395C; --blue-800: #102C48;
       --blue-900:  #0E2438; --blue-950: #091824;
-      --gold-100:  #FDF0D6; --gold-200: #FBE0AC; --gold-300: #FACB78;
-      --gold-400:  #F7B64E; --gold-500: #F4A52E; --gold-600: #DE8517;
-      --gold-700:  #B8650F; --gold-800: #8F4D0D;
+      --gold-100:  #F3E7C9; --gold-200: #E5D29A; --gold-300: #D5BB6F;
+      --gold-400:  #C7A547; --gold-500: #B98A2E; --gold-600: #9C7220;
+      --gold-700:  #7A5A18; --gold-800: #5C4310;
+      --slate-400: #9AA8B7; --slate-500: #5B6B7C;
       --brick-100: #F7DAD0; --brick-200: #EDB6A4; --brick-400: #D26A4D;
       --brick-500: #C04E30; --brick-600: #A03E26; --brick-700: #7E311E;
       --green-100: #D6EDE0; --green-300: #93CFB1; --green-600: #2E8160;
@@ -79,7 +80,7 @@
       --shadow-md: 0 10px 26px rgba(14,36,56,.10);
       --shadow-lg: 0 18px 44px rgba(14,36,56,.14);
       --shadow-xl: 0 30px 70px rgba(14,36,56,.18);
-      --shadow-accent: 0 12px 28px rgba(184,101,15,.28);
+      --shadow-accent: 0 12px 28px rgba(122,90,24,.32);
 
       --space-1: .25rem; --space-2: .5rem;  --space-3: .75rem;
       --space-4: 1rem;   --space-5: 1.25rem;--space-6: 1.5rem;
@@ -306,8 +307,32 @@
       gap: var(--space-8);
       height: 68px;
     }
-    .nav-logo { flex-shrink: 0; }
-    .nav-logo img { height: 38px; }
+    .nav-logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo img { height: 40px; width: 40px; }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+      font-family: var(--font-display);
+      color: var(--brand-primary);
+    }
+    .nav-logo-text strong {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -.01em;
+    }
+    .nav-logo-text span {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -337,7 +362,7 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 70% 110%, rgba(244,165,46,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 70% 110%, rgba(185,138,46,.18) 0%, transparent 60%),
         radial-gradient(ellipse 50% 40% at 20% -10%, rgba(30,78,120,.6) 0%, transparent 60%);
       pointer-events: none;
     }
@@ -373,7 +398,7 @@
       justify-content: center;
       opacity: .9;
     }
-    .hero-sunburst img { width: 100%; max-width: 420px; filter: drop-shadow(0 20px 48px rgba(244,165,46,.35)); }
+    .hero-sunburst img { width: 100%; max-width: 420px; filter: drop-shadow(0 20px 48px rgba(185,138,46,.35)); }
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -591,7 +616,7 @@
     }
     .field input:focus, .field select:focus, .field textarea:focus {
       border-color: var(--gold-500);
-      box-shadow: 0 0 0 3px rgba(244,165,46,.3);
+      box-shadow: 0 0 0 3px rgba(185,138,46,.3);
     }
     .field textarea { resize: vertical; min-height: 90px; }
     .field-full { grid-column: 1 / -1; }
@@ -692,6 +717,99 @@
     }
     .footer-social a:hover { background: var(--blue-800); color: var(--gold-400); }
 
+    /* ─── FAQ ───────────────────────────────────────────────── */
+    .faq-bg {
+      background: var(--paper);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: var(--space-16);
+      align-items: start;
+    }
+    .faq-intro p {
+      font-size: var(--text-md);
+      color: var(--text-muted);
+      line-height: var(--leading-normal);
+      margin-top: var(--space-4);
+      max-width: 360px;
+    }
+    .faq-intro .faq-meta {
+      margin-top: var(--space-6);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--border-subtle);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: var(--leading-normal);
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--cream);
+      transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+    }
+    .faq-item[open] {
+      background: var(--paper);
+      border-color: var(--gold-300);
+      box-shadow: var(--shadow-sm);
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--text-strong);
+      line-height: 1.35;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::marker { content: ''; }
+    .faq-item summary:hover { color: var(--blue-700); }
+    .faq-item summary::after {
+      content: '';
+      margin-left: auto;
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold-100);
+      background-image:
+        linear-gradient(currentColor, currentColor),
+        linear-gradient(currentColor, currentColor);
+      background-size: 10px 2px, 2px 10px;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--gold-700);
+      transition: transform var(--dur-base) var(--ease), background-color var(--dur-base) var(--ease);
+    }
+    .faq-item[open] summary::after {
+      background-size: 10px 2px, 2px 0;
+      background-color: var(--gold-500);
+      color: #fff;
+    }
+    .faq-answer {
+      padding: 0 var(--space-6) var(--space-6) var(--space-6);
+      font-size: var(--text-sm);
+      color: var(--text-body);
+      line-height: var(--leading-normal);
+    }
+    .faq-answer p + p { margin-top: var(--space-3); }
+    .faq-answer ul { margin: var(--space-3) 0 0 var(--space-5); }
+    .faq-answer li { margin-bottom: var(--space-2); }
+    .faq-answer strong { color: var(--text-strong); }
+    .faq-answer a { color: var(--blue-700); border-bottom: 1px dotted var(--blue-300); }
+    .faq-answer a:hover { color: var(--blue-900); }
+
     /* ─── Volunteer roles ───────────────────────────────────── */
     .vol-roles {
       display: grid;
@@ -759,7 +877,7 @@
     /* ─── Donate ────────────────────────────────────────────── */
     .donate-bg {
       background:
-        radial-gradient(ellipse 50% 50% at 100% 0%, rgba(244,165,46,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 100% 0%, rgba(185,138,46,.10) 0%, transparent 60%),
         radial-gradient(ellipse 60% 50% at 0% 100%, rgba(44,102,153,.08) 0%, transparent 60%),
         var(--cream);
       position: relative;
@@ -843,7 +961,7 @@
     .donate-card a:hover { color: var(--gold-300); }
     .donate-card .btn { width: 100%; }
     .donate-platform-slot {
-      border: 1.5px dashed rgba(244,165,46,.4);
+      border: 1.5px dashed rgba(185,138,46,.4);
       border-radius: var(--radius-md);
       padding: var(--space-5);
       font-size: var(--text-sm);
@@ -885,7 +1003,7 @@
     /* ─── Responsive ──────────────────────────────────────────── */
     @media (max-width: 900px) {
       :root { --section-y: 4rem; }
-      .hero-inner, .mission-grid, .volunteer-inner, .donate-grid { grid-template-columns: 1fr; gap: var(--space-10); }
+      .hero-inner, .mission-grid, .volunteer-inner, .donate-grid, .faq-layout { grid-template-columns: 1fr; gap: var(--space-10); }
       .vol-roles { grid-template-columns: 1fr; }
       .hero-sunburst { display: none; }
       .programs-grid, .events-grid { grid-template-columns: 1fr; }
@@ -910,7 +1028,11 @@
   <div class="container">
     <nav class="nav-inner">
       <a href="#home" class="nav-logo" aria-label="Springfield Together home">
-        <img src="assets/logo-horizontal.svg" alt="Springfield Together">
+        <img src="assets/logo-mark.svg" alt="">
+        <span class="nav-logo-text">
+          <strong>Springfield Together</strong>
+          <span>Springfield, Massachusetts</span>
+        </span>
       </a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -918,6 +1040,7 @@
         <li><a href="#events">Events</a></li>
         <li><a href="#volunteer">Volunteer</a></li>
         <li><a href="#donate">Donate</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-cta">
@@ -935,10 +1058,10 @@
         <div class="hero-eyebrow">
           <span class="eyebrow eyebrow--light">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-              <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
-              <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-              <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-              <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+              <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
             </svg>
             Springfield, MA · Since 2013
           </span>
@@ -986,10 +1109,10 @@
         <div class="section-label">
           <span class="eyebrow">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-              <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
-              <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-              <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-              <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+              <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+              <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
             </svg>
             Our mission
           </span>
@@ -1077,10 +1200,10 @@
     <div class="section-label">
       <span class="eyebrow">
         <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-          <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
-          <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-          <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-          <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+          <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+          <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
         </svg>
         What we do
       </span>
@@ -1186,10 +1309,10 @@
   <div class="container" style="text-align: center;">
     <span class="eyebrow eyebrow--light">
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-        <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
-        <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-        <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-        <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+        <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+        <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+        <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
       </svg>
       Our impact
     </span>
@@ -1227,10 +1350,10 @@
       <div>
         <span class="eyebrow">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-            <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
-            <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+            <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
           </svg>
           Upcoming events
         </span>
@@ -1298,10 +1421,10 @@
       <div class="donate-content reveal">
         <span class="eyebrow">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-            <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
-            <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+            <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
           </svg>
           Support our work
         </span>
@@ -1352,7 +1475,7 @@
         <p>In the meantime, you can email us to give, or mail a check using the address shown.</p>
         <a class="btn btn--secondary btn--pill btn--lg" href="mailto:springfieldtogetherinc@gmail.com?subject=Donation%20to%20Springfield%20Together">Email us to give</a>
         <span class="donate-tax-note">
-          Springfield Together, Inc. operates as a Massachusetts nonprofit corporation. Tax-deductibility status and EIN will be confirmed on the receipt the donation platform sends.
+          Springfield Together, Inc. is a registered 501(c)(3) nonprofit (EIN 83-2443347). Donations are tax-deductible to the extent allowed by law.
         </span>
       </div>
     </div>
@@ -1366,10 +1489,10 @@
       <div class="reveal">
         <span class="eyebrow">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
-            <circle cx="12" cy="18" r="6" fill="#F4A52E"/>
-            <line x1="12" y1="2" x2="12" y2="6" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
-            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#F4A52E" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+            <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
           </svg>
           Volunteer
         </span>
@@ -1510,6 +1633,138 @@
   </div>
 </section>
 
+<!-- ─── FAQ ────────────────────────────────────────────────────── -->
+<section class="faq-bg" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="faq-intro reveal">
+        <span class="eyebrow">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+            <circle cx="12" cy="18" r="6" fill="#B98A2E"/>
+            <line x1="12" y1="2" x2="12" y2="6" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="4" y1="6" x2="6.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+            <line x1="20" y1="6" x2="17.5" y2="9" stroke="#B98A2E" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Frequently asked
+        </span>
+        <h2 class="section-headline" style="margin-top: var(--space-4);">
+          Quick answers about who we are and how we work.
+        </h2>
+        <div class="divider"></div>
+        <p>Written for residents, donors, reporters, and anyone trying to get accurate information about Springfield Together quickly. Don't see your question? <a href="#contact" style="color: var(--blue-700); border-bottom: 1px dotted var(--blue-300);">Ask us directly</a>.</p>
+        <p class="faq-meta">
+          <strong>Springfield Together, Inc.</strong><br>
+          501(c)(3) nonprofit · EIN 83-2443347<br>
+          185 Belmont Ave, Springfield, MA 01108<br>
+          Forest Park neighborhood
+        </p>
+      </div>
+
+      <div class="faq-list reveal">
+        <details class="faq-item" open>
+          <summary>What is Springfield Together?</summary>
+          <div class="faq-answer">
+            <p>Springfield Together, Inc. is a community nonprofit based in Springfield, Massachusetts, focused on youth development, education, and family support through events and partnerships rather than direct social services.</p>
+            <p>In practice that shows up as recurring community events — holiday parties, back-to-school drives, food distributions, and police-community programs — run with local businesses, schools, and the Springfield Police Department's C3 (Counter Criminal Continuum) policing unit in Forest Park.</p>
+          </div>
+        </details>
+
+        <details class="faq-item" open>
+          <summary>Is Springfield Together a registered 501(c)(3) nonprofit?</summary>
+          <div class="faq-answer">
+            <p>Yes. Springfield Together, Inc. is registered with the IRS as a tax-exempt charitable organization, <strong>EIN 83-2443347</strong>. Donations are tax-deductible to the extent allowed by law.</p>
+            <p>Because annual revenue is under $50,000, we file the simplified Form 990-N ("e-Postcard") rather than a full Form 990 — that's standard for small nonprofits, but does mean detailed financial breakdowns aren't publicly available the way they would be for a larger charity. You can find our IRS record on <a href="https://www.charitynavigator.org/ein/832443347" target="_blank" rel="noopener">Charity Navigator</a> and <a href="https://projects.propublica.org/nonprofits/organizations/832443347/" target="_blank" rel="noopener">ProPublica Nonprofit Explorer</a>.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>When was Springfield Together founded?</summary>
+          <div class="faq-answer">
+            <p>Springfield Together traces its roots to 2013, when it began as an informal group organizing community events in Springfield. It was formally incorporated as a nonprofit in 2015, in partnership with the Springfield Police Department's C3 Unit.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How big is Springfield Together, financially?</summary>
+          <div class="faq-answer">
+            <p>It's a small, volunteer-driven operation. Nonprofit data aggregators list our annual operating budget at roughly $34,000 (as of 2024), consistent with an organization that runs on donations, in-kind partner contributions, and volunteer labor rather than paid staff or large grants.</p>
+            <p>There is currently no public Form 990 with itemized revenue and expenses, since organizations under the $50,000 threshold aren't required to file one.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does Springfield Together actually do?</summary>
+          <div class="faq-answer">
+            <p>Most of our work centers on recurring, hands-on community events rather than ongoing case management or direct services. Documented activities include:</p>
+            <ul>
+              <li><strong>Holiday and seasonal events</strong> — Easter parties, Halloween events, Thanksgiving giveaways (including Spanish-language outreach), and Christmas/holiday parties for children and families.</li>
+              <li><strong>Shop with a Cop</strong> — an annual holiday shopping event pairing Springfield elementary school students with police officers and sheriff's deputies at a local Walmart. Sponsors have included Walmart, City Connects, Springfield Police, C3 Forest Park, Springfield Public Schools, the Law Offices of Dunn and Phillips, and the Hampden County Sheriff's Department.</li>
+              <li><strong>Food distribution</strong> — recurring produce giveaways with Inter Produce Supermarket on White Street, where the store owner donates roughly 200 boxes of fresh food per event to families through Springfield Public Schools' City Connects program.</li>
+              <li><strong>Community fundraisers</strong> — including a WWLP MassAppeal wine-tasting event that raised support for Ukraine relief.</li>
+              <li><strong>Ladies' Day Out and end-of-year cookouts</strong> — recurring social and community-building events for adults and families.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Who leads Springfield Together?</summary>
+          <div class="faq-answer">
+            <p>A small volunteer board:</p>
+            <ul>
+              <li><strong>Gary Delisle</strong> — President. A Springfield native now living in East Longmeadow; Westfield State University graduate.</li>
+              <li><strong>Neil Phillips</strong> — Vice President & Clerk. A practicing attorney since 1979 (Westfield State and Western New England Law); also involved with Celebration of Hope of Western Mass.</li>
+              <li><strong>Phillip Bambara</strong> — Treasurer. CPA and Notre Dame graduate, previously at Price Waterhouse & Co. and Aetna; co-chairs Rebuilding Together of Manchester, CT.</li>
+              <li><strong>Jerry Nardi</strong> — Director. Involved with several humanitarian causes, including Cospas-Sarsat and the Christian Appalachian Project.</li>
+              <li><strong>Shatequa "Teka Jones" Watkins</strong> — Director. Founder of Strong Young Minds Inc.; appointed to Springfield's COVID-19 Youth Council and named a 2025 Commonwealth Heroine by the Massachusetts Commission on the Status of Women.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Who are Springfield Together's community partners?</summary>
+          <div class="faq-answer">
+            <p>Current and past partners include iHeartRadio, the Law Offices of Dunn and Phillips P.C., Springfield Elks Lodge, Palazzo Cafe, All About You Home Healthcare LLC, Food Zone, Inter Produce Supermarket, Strong Young Minds, Walmart, and Big Y. Partnership generally takes the form of event sponsorship, in-kind donations, or co-hosting, rather than ongoing financial grants.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Has Springfield Together been covered by local news?</summary>
+          <div class="faq-answer">
+            <p>Yes, intermittently, mostly by Springfield-area TV stations covering our events:</p>
+            <ul>
+              <li>WWLP (22News) covered a 2021 food distribution at Inter Produce, where volunteers and teachers got donated groceries to Springfield-area school families during the pandemic.</li>
+              <li>WWLP also covered our <em>Shop with a Cop</em> event at the Boston Road Walmart, where Hampden County Sheriff Nick Cocchi and Springfield police officers took students holiday shopping.</li>
+              <li>WWLP's <em>MassAppeal</em> featured a Springfield Together wine-tasting fundraiser supporting Ukraine.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is Springfield Together affiliated with the City of Springfield or the police department?</summary>
+          <div class="faq-answer">
+            <p>We're an independent nonprofit, not a city agency — but we work closely with the Springfield Police Department's C3 Unit and with Springfield Public Schools' City Connects program. That partnership is foundational to our history: we formally incorporated as a nonprofit specifically while teaming up with the C3 Unit in 2015, and most flagship events (Shop with a Cop, holiday giveaways) are co-run with police, schools, or both.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How can someone get involved, volunteer, or donate?</summary>
+          <div class="faq-answer">
+            <p>Three channels: showing up to volunteer at events, partnering as a local business or organization, or making a direct donation.</p>
+            <p>Because we're small, the most reliable way to start is by reaching out directly via email or Facebook — see the <a href="#contact">contact form</a> or message us at <a href="mailto:springfieldtogetherinc@gmail.com">springfieldtogetherinc@gmail.com</a>. Our online donation platform is being set up; until then, give by check to the address above or email us to coordinate.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is "Springfield Together" the same as any other similarly-named group?</summary>
+          <div class="faq-answer">
+            <p>No. We should not be confused with <em>Rebuilding Together</em> (a separate, unaffiliated nonprofit focused on home repairs), or with other "Together" or "Springfield" civic branding used elsewhere in the city or in other Springfields nationally. This Springfield Together is specifically the Springfield, Massachusetts organization headquartered in the Forest Park neighborhood, EIN 83-2443347.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── Partners ──────────────────────────────────────────────── -->
 <section class="partners-bg" style="padding: var(--space-16) 0;">
   <div class="container" style="text-align: center;">
@@ -1550,7 +1805,7 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <img src="assets/logo-horizontal-light.svg" alt="Springfield Together" height="44">
+        <img src="assets/logo-horizontal-light.svg" alt="Springfield Together" style="height: 88px; max-width: 100%;">
         <p>A community nonprofit serving Springfield, MA since 2013. Youth development, education, and bringing families and the C3 Police Unit together — one step at a time.</p>
         <div class="footer-social" style="margin-top: var(--space-5);">
           <a href="https://www.facebook.com/springfieldtogether" target="_blank" rel="noopener" aria-label="Springfield Together on Facebook">
@@ -1595,7 +1850,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2026 Springfield Together, Inc. · Springfield, Massachusetts</p>
+      <p>© 2026 Springfield Together, Inc. · 501(c)(3) nonprofit · EIN 83-2443347</p>
       <div style="display: flex; gap: var(--space-5);">
         <a href="privacy.html">Privacy</a>
         <a href="accessibility.html">Accessibility</a>
