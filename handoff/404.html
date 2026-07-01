@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · Springfield Together</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#16395C">
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Lora:ital,wght@0,400;1,400&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-900: #0E2438; --blue-700: #16395C;
+      --gold-500: #B98A2E; --gold-400: #C7A547;
+      --cream: #F7F4EC; --ink-500: #6E7068;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Public Sans', system-ui, sans-serif;
+      color: #F4F1E8;
+      background: var(--blue-900);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card { max-width: 520px; }
+    img.mark { width: 90px; height: 90px; margin: 0 auto 24px; filter: brightness(0) invert(1) opacity(.9); }
+    h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--gold-400);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    p {
+      color: rgba(244,241,232,.72);
+      font-size: 1rem;
+      line-height: 1.55;
+      margin-bottom: 32px;
+    }
+    a.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold-500);
+      color: #0E2438;
+      font-weight: 600;
+      padding: 14px 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background .2s;
+    }
+    a.btn:hover { background: var(--gold-400); }
+    a.link { color: var(--gold-400); text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="mark" src="assets/logo-mark-reversed.svg" alt="">
+    <h1>404</h1>
+    <h2>This page took a detour.</h2>
+    <p>The page you're looking for isn't here. Maybe check the homepage, or send us a note and we'll help you find it.</p>
+    <a class="btn" href="/">Back to Springfield Together</a>
+    <p style="margin-top: 28px; font-size: .875rem;">
+      Or email <a class="link" href="mailto:springfieldtogetherinc@gmail.com">springfieldtogetherinc@gmail.com</a>.
+    </p>
+  </div>
+</body>
+</html>

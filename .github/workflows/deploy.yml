@@ -1,0 +1,57 @@
+name: Deploy to gh-pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'handoff/**'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish handoff/ to gh-pages
+        run: |
+          set -euo pipefail
+
+          # Stage deploy files: everything under handoff/ except internal docs.
+          DEPLOY=$(mktemp -d)
+          rsync -a \
+            --exclude='*.docx' \
+            --exclude='*.md' \
+            --exclude='springfield-together-info-needed.*' \
+            handoff/ "$DEPLOY/"
+
+          # Fetch remote gh-pages so we replace its contents cleanly.
+          git config user.name "spfd-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git fetch origin gh-pages:gh-pages || git branch gh-pages
+
+          # Reset a work tree onto gh-pages and swap its contents.
+          WORK=$(mktemp -d)
+          git worktree add "$WORK" gh-pages
+          find "$WORK" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          cp -r "$DEPLOY"/. "$WORK/"
+
+          cd "$WORK"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No deploy changes."
+            exit 0
+          fi
+          git commit -m "Deploy from ${GITHUB_SHA::7}"
+          git push origin gh-pages
