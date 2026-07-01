@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Declaración de Accesibilidad · Springfield Together</title>
+  <meta name="description" content="El compromiso de Springfield Together con hacer este sitio web usable para todos.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://springfieldtogether.org/es/accessibility.html">
+  <link rel="alternate" hreflang="en" href="https://springfieldtogether.org/accessibility.html">
+  <link rel="alternate" hreflang="es" href="https://springfieldtogether.org/es/accessibility.html">
+  <meta name="theme-color" content="#16395C">
+  <link rel="icon" href="../assets/logo-mark.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-700: #16395C; --blue-900: #0E2438; --blue-950: #091824;
+      --gold-400: #C7A547; --gold-500: #B98A2E; --gold-700: #7A5A18;
+      --ink-500: #6E7068; --ink-700: #3F413B; --ink-950: #1A1B18;
+      --cream: #F7F4EC; --paper: #FFFFFF;
+      --line: #E6E2D6;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Public Sans', system-ui, -apple-system, sans-serif;
+      color: var(--ink-700);
+      background: var(--cream);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue-700); }
+    a:focus-visible { outline: 2px solid var(--gold-500); outline-offset: 3px; border-radius: 4px; }
+    header { background: var(--blue-900); color: #fff; padding: 24px 0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .header-inner { display: flex; align-items: center; gap: 16px; }
+    header a.back { color: var(--gold-400); font-weight: 600; text-decoration: none; font-size: 14px; }
+    .lang-toggle {
+      margin-left: auto;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 6px; border-radius: 999px;
+      background: rgba(244,241,232,.1);
+      font-size: 12px; font-weight: 600; letter-spacing: .04em;
+    }
+    .lang-toggle a {
+      padding: 4px 10px; border-radius: 999px;
+      color: rgba(244,241,232,.7);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .lang-toggle a[aria-current="true"] { background: var(--gold-500); color: var(--blue-950); }
+    main { padding: 56px 0 80px; }
+    h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 800; color: var(--ink-950);
+      letter-spacing: -.02em; line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .updated { font-size: 14px; color: var(--ink-500); margin-bottom: 32px; }
+    h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.375rem; font-weight: 700;
+      color: var(--ink-950); margin: 32px 0 10px;
+      letter-spacing: -.01em;
+    }
+    p, li { font-size: 1rem; margin-bottom: 12px; }
+    ul { padding-left: 22px; margin-bottom: 12px; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0; font-size: 14px;
+      color: var(--ink-500); text-align: center;
+    }
+    footer a { text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a class="back" href="index.html">← Volver a springfieldtogether.org</a>
+      <div class="lang-toggle" role="group" aria-label="Idioma">
+        <a href="../accessibility.html" hreflang="en">EN</a>
+        <a href="accessibility.html" aria-current="true" hreflang="es">ES</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1>Declaración de Accesibilidad</h1>
+    <p class="updated">Última actualización: por determinar. Se confirmará antes del lanzamiento público.</p>
+
+    <p>Springfield Together se compromete a hacer que este sitio sea usable para todos, incluidas las personas que navegan con teclado, lector de pantalla, control por voz o cualquier otra tecnología de asistencia.</p>
+
+    <h2>A qué aspiramos</h2>
+    <p>Nuestro objetivo base son las <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1 Nivel AA</a>. Esto significa:</p>
+    <ul>
+      <li>Contraste de color que cumple con AA en el texto del cuerpo y en los elementos interactivos.</li>
+      <li>Enfoque de teclado visible en cada enlace, botón y campo del formulario.</li>
+      <li>Etiquetas de formulario vinculadas a sus campos, y errores de formulario anunciados con claridad.</li>
+      <li>Movimiento que respeta la configuración del sistema <code>prefers-reduced-motion</code>.</li>
+      <li>Texto alternativo real en cada fotografía (que se agrega conforme se cargan las fotos).</li>
+      <li>HTML semántico para que los lectores de pantalla puedan navegar por encabezados y regiones.</li>
+    </ul>
+
+    <h2>Brechas conocidas</h2>
+    <p>Este sitio está en desarrollo activo. Puntos en los que aún trabajamos:</p>
+    <ul>
+      <li>Algunas imágenes actualmente usan íconos de marcador de posición. Se reemplazarán con fotografías reales y texto alternativo descriptivo.</li>
+      <li>El widget de donación se configura mediante una plataforma de terceros; documentaremos su nivel de accesibilidad una vez que se elija la plataforma.</li>
+      <li>La versión en español está disponible en <a href="index.html">/es/</a>. Otros idiomas están bajo consideración.</li>
+    </ul>
+
+    <h2>Si algo no funciona para ti</h2>
+    <p>Si encuentras una barrera en este sitio (cualquier cosa, desde un color difícil de leer hasta un formulario que no puedes enviar), por favor avísanos. Tratamos los problemas de accesibilidad como errores y los corregimos.</p>
+    <p>Escríbenos a <a href="mailto:springfieldtogetherinc@gmail.com">springfieldtogetherinc@gmail.com</a>, llámanos al <a href="tel:+14137879955">(413) 787-9955</a> o envía correspondencia a Springfield Together, Inc., 185 Belmont Ave, Springfield, MA 01108. Indícanos la página, el navegador o la tecnología de asistencia que usas y qué salió mal. Responderemos en un plazo de cinco días hábiles.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="y">2026</span> Springfield Together, Inc. · <a href="index.html">Inicio</a> · <a href="privacy.html">Privacidad</a> · <a href="terms.html">Términos</a>
+  </div>
+</footer>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
